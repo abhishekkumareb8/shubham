@@ -1,7 +1,11 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express app",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anaida07/people_management"
+  },
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js",
