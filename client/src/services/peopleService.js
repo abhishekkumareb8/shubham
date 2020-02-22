@@ -1,7 +1,7 @@
 import Api from '@/services/Api';
 
 export default {
-  fetchPeople() {
-    return Api().get('people');
+  fetchPeople(page) {
+    return Api().get('people', { params: { page } });
   }
 };
