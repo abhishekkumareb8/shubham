@@ -16,10 +16,24 @@
           <td>{{ person.location }}</td>
           <td>{{ person.email }}</td>
           <td>{{ person.status }}</td>
-          <td><button type="button" class="btn btn-primary">View</button></td>
+          <td>
+          </td>
         </tr>
       </tbody>
     </table>
+
+     <Modal btnText="Press me, senpai 😊"
+            :closeBtn="true"
+            closeBtnContent="<span>X</span>"
+    >
+      <ExampleComponent/>
+    </Modal>
+
+    <!-- <b-button v-b-modal.modal-1>Launch demo modal</b-button>
+    <b-modal id="modal-1" title="BootstrapVue">
+      <p class="my-4">Hello from modal!</p>
+    </b-modal> -->
+
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item" :class="{ 'disabled': (page -1 <= 0) }">
@@ -38,6 +52,8 @@
 
 <script>
 import peopleService from '@/services/peopleService';
+import Modal from '@melmacaluso/vue-modal';
+import ExampleComponent from './ExampleComponent';
 
 export default {
   name: 'people',
@@ -52,6 +68,9 @@ export default {
   },
   mounted() {
     this.getPeople();
+  },
+  components: {
+    ExampleComponent
   },
   methods: {
     async getPeople(page = 1) {

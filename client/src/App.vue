@@ -27,4 +27,11 @@ export default {
 .header {
   background: #007bff !important;
 }
+.modal {
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background: #fff;
+}
 </style>
