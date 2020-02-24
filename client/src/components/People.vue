@@ -27,7 +27,7 @@
             <td>{{ person.location }}</td>
             <td>{{ person.email }}</td>
             <td>{{ person.status }}</td>
-            <td><button type="button" class="btn btn-primary">View</button></td>
+            <td><button type="button" class="btn btn-primary" @click="showUser(person)">View</button></td>
           </tr>
         </tbody>
       </table>
@@ -48,6 +48,26 @@
     <div v-else>
       No results found
     </div>
+
+    <!-- Modal Box -->
+    <div id="my-modal" class="modal fade">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Person Clicked!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Name: {{ person.name }}</p>
+            <p>Location: {{ person.location }}</p>
+            <p>Email: {{ person.email }}</p>
+            <p>Status: {{ person.status }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -63,7 +83,8 @@ export default {
       page: 0,
       per_page: 0,
       totalPage: 0,
-      searchText: ''
+      searchText: '',
+      person: {}
     };
   },
   mounted() {
@@ -89,6 +110,10 @@ export default {
       this.page = response.data.meta.page;
       this.per_page = response.data.meta.per_page;
       this.totalPage = Math.ceil(this.total / this.per_page);
+    },
+    showUser(person) {
+      this.person = person;
+      $('#my-modal').modal('show');
     }
   }
 };
