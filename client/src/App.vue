@@ -27,4 +27,11 @@ export default {
 .header {
   background: #007bff !important;
 }
+.filter-search {
+  margin: 20px 0;
+}
+.filter-search input{
+  outline: none;
+  padding: 10px;
+}
 </style>
