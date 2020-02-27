@@ -40,4 +40,32 @@ module.exports.controller = (app) => {
       res.send(user)
     })
   })
+
+  // search users
+  app.get('/search', (req, res) => {
+    let page = parseInt(req.query.page) || 1;
+    let perPage = 7;
+    let response = {};
+    const query = {}
+    query[req.query.filter] = req.query.value;;
+    User.find(query, 'name location email status', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
+      if (error) { console.log(error); }
+      
+      User.countDocuments(query).exec((error, count) => {
+        if (error) {
+          return res.json(count_error);
+        }
+
+        response = {
+          meta: {
+            total: count,
+            page: page,
+            per_page: perPage
+          },
+          people: users
+        }
+        res.send(response)
+      });
+    })
+  })
 }

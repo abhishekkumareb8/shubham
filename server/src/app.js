@@ -40,38 +40,4 @@ app.get('/', (req, res) => {
 	)
 })
 
-app.get('/search', (req, res) => {
-	console.log(req.query);
-	const searchText = req.query.searchText;
-	const searchIn = req.query.searchIn;
-	let response = {};
-	if(searchText == 'anita' && searchIn == 'name')
-	{
-		response = {
-			meta: {
-				total: 1,
-				page: 1,
-				per_page: 7
-			},
-			people: [
-				{
-					name: 'Anita Sharma',
-					location: 'Kathmandu',
-					status: 'Discarded',
-					email: 'get.aneeta@gmail.com'
-				}
-			]
-		}
-	} else {
-		response = {
-			meta: {
-				total: 0
-			}
-		}
-	}
-	res.send(
-		response
-	)
-})
-
 app.listen(process.env.PORT || 8081);

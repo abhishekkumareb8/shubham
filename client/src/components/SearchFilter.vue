@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     async onChange(evt) {
-      const params = { searchText: this.searchText, searchIn: evt.target.value };
+      const params = { value: this.searchText, filter: evt.target.value };
       const response = await peopleService.searchPeople(params);
       this.$emit('refreshPeople', response);
     }

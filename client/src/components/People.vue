@@ -23,11 +23,9 @@
           </tr>
         </tbody>
       </table>
-
       <!-- Pagination -->
       <Pagination :page="this.page" :totalPage="this.totalPage" v-on:getPeople="getPeople" />
       <!-- Pagination -->
-
     </div>
     <div v-else>
       No results found
