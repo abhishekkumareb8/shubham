@@ -31,6 +31,8 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- Pagination -->
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item" :class="{ 'disabled': (page -1 <= 0) }">
@@ -44,6 +46,8 @@
           </li>
         </ul>
       </nav>
+      <!-- Pagination -->
+
     </div>
     <div v-else>
       No results found
@@ -68,6 +72,7 @@
         </div>
       </div>
     </div>
+    <!-- Modal Box -->
   </div>
 </template>
 
