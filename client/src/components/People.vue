@@ -82,18 +82,17 @@ export default {
   },
   methods: {
     refreshPeople(response) {
-      this.people = response.data.people;
-      this.total = response.data.meta.total;
-      this.page = response.data.meta.page;
-      this.per_page = response.data.meta.per_page;
-      this.totalPage = Math.ceil(this.total / this.per_page);
+      this.setData(response.data);
     },
     async getPeople(page = 1) {
       const response = await peopleService.fetchPeople(page);
-      this.people = response.data.people;
-      this.total = response.data.meta.total;
-      this.page = response.data.meta.page;
-      this.per_page = response.data.meta.per_page;
+      this.setData(response.data);
+    },
+    setData(data) {
+      this.people = data.people;
+      this.total = data.meta.total;
+      this.page = data.meta.page;
+      this.per_page = data.meta.per_page;
       this.totalPage = Math.ceil(this.total / this.per_page);
     },
     showUser(person) {
