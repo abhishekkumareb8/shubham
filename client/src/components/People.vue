@@ -60,7 +60,7 @@ export default {
       per_page: 0,
       totalPage: 0,
       person: {},
-      order: 'asc',
+      order: 'desc',
       sortBy: ''
     };
   },
