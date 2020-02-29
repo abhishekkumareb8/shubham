@@ -7,7 +7,9 @@
         </div>
       </div>
     </nav>
-    <router-view/>
+    <b-container fluid="sm">
+      <router-view/>
+    </b-container>
   </div>
 </template>
 

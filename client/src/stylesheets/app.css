@@ -22,3 +22,6 @@
   border-color: #007bff !important;
   color: #fff !important;
 }
+.align-right {
+  text-align: right;
+}

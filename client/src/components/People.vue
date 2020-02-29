@@ -1,37 +1,41 @@
 <template>
-  <div class="people p-5">
+  <div>
     <SearchFilter v-on:refreshPeople="refreshPeople" />
 
-    <div v-if="total > 0">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="person in people" v-bind:key="person.name">
-            <td>{{ person.name }}</td>
-            <td>{{ person.location }}</td>
-            <td>{{ person.email }}</td>
-            <td>{{ person.status }}</td>
-            <td>
-              <button type="button" @click="toggleModal(person)"> View </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <!-- Pagination -->
-      <Pagination :page="this.page" :totalPage="this.totalPage" v-on:getPeople="getPeople" />
-      <!-- Pagination -->
-    </div>
-    <div v-else>
-      No results found
-    </div>
+    <b-row>
+      <b-col v-if="total > 0">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="person in people" v-bind:key="person.name">
+                <td>{{ person.name }}</td>
+                <td>{{ person.location }}</td>
+                <td>{{ person.email }}</td>
+                <td>{{ person.status }}</td>
+                <td class="align-right">
+                  <b-button variant="primary" @click="toggleModal(person)">View</b-button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Pagination -->
+        <Pagination :page="this.page" :totalPage="this.totalPage" v-on:getPeople="getPeople" />
+        <!-- Pagination -->
+      </b-col>
+      <b-col v-else>
+        No results found
+      </b-col>
+    </b-row>
 
     <User/>
   </div>

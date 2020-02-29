@@ -1,5 +1,5 @@
 <template>
-  <nav aria-label="Page navigation example">
+  <nav>
     <ul class="pagination">
       <li class="page-item" :class="{ 'disabled': (page -1 <= 0) }">
         <button type="button" class="page-link" @click="next(page - 1)"> Previous </button>
