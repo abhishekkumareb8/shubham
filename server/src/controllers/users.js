@@ -50,6 +50,17 @@ module.exports.controller = (app) => {
     let perPage = 7;
     let response = {};
     let query;
+
+    const sort = req.query.sort;
+    const order = req.query.order;
+    let sortQuery = {}
+    if(sort && order) {
+      sortQuery[sort] = order
+      delete req.query['sort'];
+      delete req.query['order'];
+    } else {
+      sortQuery = { '_id': -1 }
+    }
     const value = Object.values(req.query)[0] || '';
     const filter = Object.keys(req.query)[0] || '';
     const filterQuery = []
@@ -61,17 +72,19 @@ module.exports.controller = (app) => {
       filterQuery.push({ location: { $regex: value, '$options': 'i' } })
       filterQuery.push({ email: { $regex: value, '$options': 'i' } })
       filterQuery.push({ status: { $regex: value, '$options': 'i' } })  
-    } else {
+    } else if(filter && value) {
       query = { $or: filterQuery }
       const queryString = {}
       queryString[filter] = { $regex: value, '$options': 'i' }
       filterQuery.push(queryString);
+    } else {
+      query = {}
     }
-    console.log(JSON.stringify(query))
-    User.find(query, 'name location email status dob contact picture', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
+    User.find(query, 'name location email status dob contact picture', { skip: perPage * (page-1), limit: perPage, sort: sortQuery }, function (error, users) {
       if (error) { console.log(error); }
       
       User.countDocuments(query).exec((error, count) => {
+        console.log(count)
         if (error) {
           return res.json(error);
         }
