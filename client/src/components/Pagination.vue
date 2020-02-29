@@ -23,7 +23,7 @@ export default {
   },
   methods: {
     next(page) {
-      this.$emit('getPeople', page);
+      this.$emit('getPeople', { page });
     }
   }
 };

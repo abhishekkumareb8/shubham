@@ -28,3 +28,9 @@
 .profilePic img{
   border-radius: 50%;
 }
+table th {
+  cursor: pointer;
+}
+table th:hover {
+  background-color: #ccc;
+}

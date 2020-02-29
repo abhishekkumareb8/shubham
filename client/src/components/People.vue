@@ -8,10 +8,10 @@
           <table class="table">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Location</th>
-                <th>Email</th>
-                <th>Status</th>
+                <th @click="sort('name', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Name</th>
+                <th @click="sort('location', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Location</th>
+                <th @click="sort('email', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Email</th>
+                <th @click="sort('status', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Status</th>
                 <th></th>
               </tr>
             </thead>
@@ -59,7 +59,8 @@ export default {
       page: 0,
       per_page: 0,
       totalPage: 0,
-      person: {}
+      person: {},
+      order: 'asc'
     };
   },
   mounted() {
@@ -69,9 +70,15 @@ export default {
     refreshPeople(response) {
       this.setData(response.data);
     },
-    async getPeople(page = 1) {
-      const response = await peopleService.fetchPeople(page);
+    async getPeople(params) {
+      const response = await peopleService.searchPeople(params);
       this.setData(response.data);
+    },
+    async sort(sort, order) {
+      const params = { sort, order };
+      const response = await peopleService.searchPeople(params);
+      this.setData(response.data);
+      this.order = order === 'asc' ? 'desc' : 'asc';
     },
     setData(data) {
       this.people = data.people;

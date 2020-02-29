@@ -50,14 +50,14 @@ module.exports.controller = (app) => {
     let perPage = 7;
     let response = {};
     let query;
-
     const sort = req.query.sort;
     const order = req.query.order;
     let sortQuery = {}
-    if(sort && order) {
+    if(sort && order && page) {
       sortQuery[sort] = order
       delete req.query['sort'];
       delete req.query['order'];
+      delete req.query['page'];
     } else {
       sortQuery = { '_id': -1 }
     }
@@ -65,21 +65,26 @@ module.exports.controller = (app) => {
     const filter = Object.keys(req.query)[0] || '';
     const filterQuery = []
     if(filter && filter == 'any' && value == '') {
+      console.log('aaaaaaaaaa')
       query = {}
     } else if(filter && filter == 'any') {
+      console.log('bbbbbbbbb')
       query = { $or: filterQuery }
       filterQuery.push({ name: { $regex: value, '$options': 'i' } })
       filterQuery.push({ location: { $regex: value, '$options': 'i' } })
       filterQuery.push({ email: { $regex: value, '$options': 'i' } })
       filterQuery.push({ status: { $regex: value, '$options': 'i' } })  
-    } else if(filter && value) {
+    } else if(filter && value && !page) {
+      console.log('cccccccccccc')
       query = { $or: filterQuery }
       const queryString = {}
       queryString[filter] = { $regex: value, '$options': 'i' }
       filterQuery.push(queryString);
     } else {
+      console.log('dddddddddddd')
       query = {}
     }
+    console.log(query);
     User.find(query, 'name location email status dob contact picture', { skip: perPage * (page-1), limit: perPage, sort: sortQuery }, function (error, users) {
       if (error) { console.log(error); }
       
