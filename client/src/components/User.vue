@@ -1,17 +1,19 @@
 <template>
   <modal name="user" @before-open="setPerson">
-    <div class="modal-header">
-      <h5 class="modal-title">Employee</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>Name: {{ person.name }}</p>
-      <p>Location: {{ person.location }}</p>
-      <p>Email: {{ person.email }}</p>
-      <p>Status: {{ person.status }}</p>
-    </div>
+    <b-container class="bv-example-row p5" fluid>
+      <b-row>Employee</b-row>
+      <b-row>
+        <b-col cols="3"><img src="https://randomuser.me/api/portraits/women/12.jpg" /></b-col>
+        <b-col cols="7">
+          <div class="modal-body">
+            <p>Name: {{ person.name }}</p>
+            <p>Location: {{ person.location }}</p>
+            <p>Email: {{ person.email }}</p>
+            <p>Status: {{ person.status }}</p>
+          </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </modal>
 </template>
 
