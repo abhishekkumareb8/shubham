@@ -46,8 +46,7 @@ module.exports.controller = (app) => {
     let page = parseInt(req.query.page) || 1;
     let perPage = 7;
     let response = {};
-    const query = {}
-    query[req.query.filter] = req.query.value;;
+    const query = req.query;
     User.find(query, 'name location email status', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
       if (error) { console.log(error); }
       
