@@ -20,7 +20,7 @@
             <td>{{ person.email }}</td>
             <td>{{ person.status }}</td>
             <td>
-              <a @click="toggleModal(person)" href="#">Open Modal</a>
+              <button type="button" @click="toggleModal(person)"> View </button>
             </td>
           </tr>
         </tbody>
