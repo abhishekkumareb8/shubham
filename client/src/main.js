@@ -12,6 +12,7 @@ import './stylesheets/app.css';
 Vue.use(BootstrapVue);
 Vue.use(VModal);
 Vue.config.productionTip = false;
+Vue.use(require('vue-moment'));
 
 /* eslint-disable no-new */
 new Vue({

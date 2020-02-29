@@ -6,7 +6,7 @@ module.exports.controller = (app) => {
     let page = parseInt(req.query.page) || 1;
     let perPage = 7;
     let response = {};
-    User.find({}, 'name location email status', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
+    User.find({}, 'name location email status dob contact picture', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
       if (error) { console.log(error); }
       
       User.countDocuments().exec((error, count) => {
@@ -33,7 +33,10 @@ module.exports.controller = (app) => {
       name: req.body.name,
       location: req.body.location,
       email: req.body.email,
-      status: req.body.status
+      status: req.body.status,
+      dob: req.body.dob,
+      contact: req.body.contact,
+      picture: req.body.picture
     })
     user.save(function (error, user) {
       if (error) { console.log(error); }
@@ -65,7 +68,7 @@ module.exports.controller = (app) => {
       filterQuery.push(queryString);
     }
     console.log(JSON.stringify(query))
-    User.find(query, 'name location email status', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
+    User.find(query, 'name location email status dob contact picture', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
       if (error) { console.log(error); }
       
       User.countDocuments(query).exec((error, count) => {
