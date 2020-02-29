@@ -46,13 +46,31 @@ module.exports.controller = (app) => {
     let page = parseInt(req.query.page) || 1;
     let perPage = 7;
     let response = {};
-    const query = req.query;
+    let query;
+    const value = Object.values(req.query)[0] || '';
+    const filter = Object.keys(req.query)[0] || '';
+    const filterQuery = []
+    if(filter && filter == 'any' && value == '') {
+      query = {}
+    } else if(filter && filter == 'any') {
+      query = { $or: filterQuery }
+      filterQuery.push({ name: { $regex: value, '$options': 'i' } })
+      filterQuery.push({ location: { $regex: value, '$options': 'i' } })
+      filterQuery.push({ email: { $regex: value, '$options': 'i' } })
+      filterQuery.push({ status: { $regex: value, '$options': 'i' } })  
+    } else {
+      query = { $or: filterQuery }
+      const queryString = {}
+      queryString[filter] = { $regex: value, '$options': 'i' }
+      filterQuery.push(queryString);
+    }
+    console.log(JSON.stringify(query))
     User.find(query, 'name location email status', { skip: perPage * (page-1), limit: perPage, sort: { '_id': -1 } }, function (error, users) {
       if (error) { console.log(error); }
       
       User.countDocuments(query).exec((error, count) => {
         if (error) {
-          return res.json(count_error);
+          return res.json(error);
         }
 
         response = {

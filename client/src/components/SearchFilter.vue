@@ -27,7 +27,7 @@ export default {
   methods: {
     async onChange() {
       const params = {};
-      params[this.filter] = this.searchText;
+      params[this.filter || 'any'] = this.searchText;
       const response = await peopleService.searchPeople(params);
       this.$emit('refreshPeople', response);
     }

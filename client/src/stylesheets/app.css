@@ -25,3 +25,6 @@
 .align-right {
   text-align: right;
 }
+.profilePic img{
+  border-radius: 50%;
+}
