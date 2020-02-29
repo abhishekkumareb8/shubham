@@ -65,26 +65,21 @@ module.exports.controller = (app) => {
     const filter = Object.keys(req.query)[0] || '';
     const filterQuery = []
     if(filter && filter == 'any' && value == '') {
-      console.log('aaaaaaaaaa')
       query = {}
     } else if(filter && filter == 'any') {
-      console.log('bbbbbbbbb')
       query = { $or: filterQuery }
       filterQuery.push({ name: { $regex: value, '$options': 'i' } })
       filterQuery.push({ location: { $regex: value, '$options': 'i' } })
       filterQuery.push({ email: { $regex: value, '$options': 'i' } })
       filterQuery.push({ status: { $regex: value, '$options': 'i' } })  
     } else if(filter && value && !page) {
-      console.log('cccccccccccc')
       query = { $or: filterQuery }
       const queryString = {}
       queryString[filter] = { $regex: value, '$options': 'i' }
       filterQuery.push(queryString);
     } else {
-      console.log('dddddddddddd')
       query = {}
     }
-    console.log(query);
     User.find(query, 'name location email status dob contact picture', { skip: perPage * (page-1), limit: perPage, sort: sortQuery }, function (error, users) {
       if (error) { console.log(error); }
       

@@ -8,10 +8,10 @@
           <table class="table">
             <thead>
               <tr>
-                <th @click="sort('name', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Name</th>
-                <th @click="sort('location', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Location</th>
-                <th @click="sort('email', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Email</th>
-                <th @click="sort('status', order)"><b-icon-arrow-up-down></b-icon-arrow-up-down> Status</th>
+                <th @click="sort('name', order === 'desc' ? 'asc' : 'desc')"><b-icon-arrow-up-down></b-icon-arrow-up-down> Name</th>
+                <th @click="sort('location', order === 'desc' ? 'asc' : 'desc')"><b-icon-arrow-up-down></b-icon-arrow-up-down> Location</th>
+                <th @click="sort('email', order === 'desc' ? 'asc' : 'desc')"><b-icon-arrow-up-down></b-icon-arrow-up-down> Email</th>
+                <th @click="sort('status', order === 'desc' ? 'asc' : 'desc')"><b-icon-arrow-up-down></b-icon-arrow-up-down> Status</th>
                 <th></th>
               </tr>
             </thead>
@@ -28,7 +28,7 @@
             </tbody>
           </table>
         </div>
-        <Pagination :page="this.page" :totalPage="this.totalPage" v-on:getPeople="getPeople" />
+        <Pagination :page="this.page" :totalPage="this.totalPage" :sort="this.sortBy" :order="this.order" v-on:getPeople="getPeople" />
       </b-col>
       <b-col v-else>
         No results found
@@ -60,7 +60,8 @@ export default {
       per_page: 0,
       totalPage: 0,
       person: {},
-      order: 'asc'
+      order: 'asc',
+      sortBy: ''
     };
   },
   mounted() {
@@ -78,7 +79,8 @@ export default {
       const params = { sort, order };
       const response = await peopleService.searchPeople(params);
       this.setData(response.data);
-      this.order = order === 'asc' ? 'desc' : 'asc';
+      this.sortBy = sort;
+      this.order = order;
     },
     setData(data) {
       this.people = data.people;
