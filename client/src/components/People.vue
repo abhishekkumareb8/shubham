@@ -19,7 +19,9 @@
             <td>{{ person.location }}</td>
             <td>{{ person.email }}</td>
             <td>{{ person.status }}</td>
-            <td><button type="button" class="btn btn-primary" @click="showUser(person)">View</button></td>
+            <td>
+              <a @click="toggleModal(person)" href="#">Open Modal</a>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -31,26 +33,7 @@
       No results found
     </div>
 
-    <!-- Modal Box -->
-    <div id="my-modal" class="modal fade">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Person Clicked!</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <p>Name: {{ person.name }}</p>
-            <p>Location: {{ person.location }}</p>
-            <p>Email: {{ person.email }}</p>
-            <p>Status: {{ person.status }}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal Box -->
+    <User/>
   </div>
 </template>
 
@@ -58,12 +41,14 @@
 import peopleService from '@/services/peopleService';
 import SearchFilter from './SearchFilter';
 import Pagination from './Pagination';
+import User from './User';
 
 export default {
   name: 'people',
   components: {
     SearchFilter,
-    Pagination
+    Pagination,
+    User
   },
   data() {
     return {
@@ -93,9 +78,8 @@ export default {
       this.per_page = data.meta.per_page;
       this.totalPage = Math.ceil(this.total / this.per_page);
     },
-    showUser(person) {
-      this.person = person;
-      $('#my-modal').modal('show');
+    toggleModal(person) {
+      this.$modal.show('user', person);
     }
   }
 };
