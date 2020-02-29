@@ -14,3 +14,11 @@
   outline: none;
   padding: 10px;
 }
+.pagination li{
+  outline: none;
+}
+.pagination .active button{
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  color: #fff !important;
+}
