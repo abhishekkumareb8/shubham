@@ -28,9 +28,7 @@
             </tbody>
           </table>
         </div>
-        <!-- Pagination -->
         <Pagination :page="this.page" :totalPage="this.totalPage" v-on:getPeople="getPeople" />
-        <!-- Pagination -->
       </b-col>
       <b-col v-else>
         No results found
