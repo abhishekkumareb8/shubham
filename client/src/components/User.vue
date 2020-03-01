@@ -1,15 +1,13 @@
 <template>
-  <modal name="user" @before-open="setPerson" :height="400" :width="600" :scrollable="true">
+  <b-modal id="user" title="Employee" ok-only ok-title="Save" size="lg">
     <b-container class="pt-3 pb-4 userDetail" fluid="sm">
-      <div><h3>Employee</h3></div>
-      <hr />
       <b-row>
-        <b-col cols="4" class="profilePic text-center">
+        <b-col cols="12" md="4" class="profilePic text-center">
           <img v-bind:src="person.picture" />
           <h4>{{person.name}}</h4>
           {{person.status}}
         </b-col>
-        <b-col cols="12" md="auto">
+        <b-col cols="12" md="8">
           <div>
             <b-form-group
               id="fieldset-address"
@@ -47,16 +45,15 @@
             >
               <b-form-input id="contact" v-model="person.contact" trim></b-form-input>
             </b-form-group>
-            <div class="align-right"><b-button variant="primary">Save</b-button></div>
           </div>
         </b-col>
       </b-row>
     </b-container>
-  </modal>
+  </b-modal>
 </template>
 
 <script>
-import { BContainer, BRow, BCol, BFormGroup, BFormInput, BButton } from 'bootstrap-vue';
+import { BContainer, BRow, BCol, BFormGroup, BFormInput, BButton, BModal } from 'bootstrap-vue';
 import moment from 'moment';
 
 export default {
@@ -64,9 +61,11 @@ export default {
   data() {
     return {
       active: false,
-      person: {},
       dateofbirth: ''
     };
+  },
+  props: {
+    person: Object
   },
   components: {
     'b-container': BContainer,
@@ -74,14 +73,14 @@ export default {
     'b-col': BCol,
     'b-form-group': BFormGroup,
     'b-form-input': BFormInput,
-    'b-button': BButton
+    'b-button': BButton,
+    'b-modal': BModal
   },
   methods: {
     show() {
       this.active = true;
     },
     setPerson(event) {
-      this.person = event.params;
       this.dateofbirth = moment(event.params.dob).format('YYYY-MM-DD');
     }
   }

@@ -49,10 +49,10 @@ describe('People', () => {
   it('renders table if total people count is greater than 0 ', () => {
     wrapper.setData({ 
       people: [{
-        name: 'anc',
-        location: 'a',
-        email: 'asd',
-        status: 'dis'
+        name: 'Joe Hunter',
+        location: '205 College St',
+        email: 'joe.hunter@example.com',
+        status: 'Discarded'
       }],
       total: 1 
     })
@@ -64,10 +64,10 @@ describe('People', () => {
   it('emits toggleModal event when View button is clicked', () => {
     wrapper.setData({ 
       people: [{
-        name: 'anc',
-        location: 'a',
-        email: 'asd',
-        status: 'dis'
+        name: 'Joe Hunter',
+        location: '205 College St',
+        email: 'joe.hunter@example.com',
+        status: 'Discarded'
       }],
       total: 1 
     })
@@ -81,10 +81,10 @@ describe('People', () => {
   it('emits sort event when a table header is clicked', () => {
     wrapper.setData({ 
       people: [{
-        name: 'anc',
-        location: 'a',
-        email: 'asd',
-        status: 'dis'
+        name: 'Joe Hunter',
+        location: '205 College St',
+        email: 'joe.hunter@example.com',
+        status: 'Discarded'
       }],
       total: 1 
     })

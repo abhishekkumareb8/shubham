@@ -3,7 +3,18 @@ import User from '@/components/User';
 
 let wrapper;
 beforeEach(() => {
-  wrapper = shallowMount(User);
+  wrapper = shallowMount(User, {
+    propsData: {
+      person: {
+        name: 'Joe Hunter',
+        location: '205 College St',
+        email: 'joe.hunter@example.com',
+        status: 'Discarded',
+        picture: 'https://randomuser.me/api/portraits/men/9.jpg',
+        contact: '(526)-534-5309'
+      }
+    }
+  });
 });
 
 afterEach(() => {
@@ -18,7 +29,6 @@ describe('User', () => {
   it('sets the correct default data', () => {
     let data = {
       active: false,
-      person: {},
       dateofbirth: ''
     };
     expect(typeof User.data).toBe('function');

@@ -24,7 +24,9 @@
                   <td>{{ person.location }}</td>
                   <td>{{ person.email }}</td>
                   <td>{{ person.status }}</td>
-                  <td class="align-right"><b-button variant="primary" class="viewBtn" @click="toggleModal(person)">View</b-button></td>
+                  <td class="align-right">
+                    <b-button variant="primary" class="viewBtn" v-b-modal.user @click="setPerson(person)">View</b-button>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -36,7 +38,7 @@
         </b-col>
       </b-col>
     </b-row>
-    <User/>
+    <User :person="this.person" />
   </div>
 </template>
 
@@ -103,6 +105,9 @@ export default {
     },
     toggleModal(person) {
       this.$modal.show('user', person);
+    },
+    setPerson(person) {
+      this.person = person;
     }
   }
 };
