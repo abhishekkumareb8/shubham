@@ -4,9 +4,23 @@
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-.header {
+.navbar {
   background: #007bff !important;
 }
+.align-right {
+  text-align: right;
+}
+h4 { 
+  line-height: 22px;
+  margin-top: 20px;
+}
+.profilePic img{
+  border-radius: 50%;
+}
+
+/*******************************/
+/***** Search Filter ***********/
+/*******************************/
 .filter-search {
   margin: 20px 0;
 }
@@ -14,27 +28,48 @@
   outline: none;
   padding: 10px;
 }
+
+/*******************************/
+/***** Pagination **************/
+/*******************************/
 .pagination li{
   outline: none;
+}
+.page-link {
+  color: #212529 !important;
 }
 .pagination .active button{
   background-color: #007bff !important;
   border-color: #007bff !important;
   color: #fff !important;
 }
-.align-right {
-  text-align: right;
+
+/*******************************/
+/***** Buttons *****************/
+/*******************************/
+.viewBtn {
+  background-color: #fff !important;
+  border-color: #007bff !important;
+  color: #212529;
 }
-.profilePic img{
-  border-radius: 50%;
+.viewBtn:hover {
+  background-color: #007bff !important;
+  border-color: #007bff !important;
+  color: #fff !important;
 }
+.saveBtn {
+  width: 100%;
+  text-align: center;
+}
+
+/*******************************/
+/***** Table ******************/
+/*******************************/
+
 table th {
   cursor: pointer;
 }
 table th:hover {
-  background-color: #ccc;
+  background-color: #eee;
 }
-h4 { 
-  line-height: 22px;
-  margin-top: 20px;
-}
+

@@ -1,5 +1,5 @@
 <template>
-  <modal name="user" @before-open="setPerson" :height="400" :width="500" :scrollable="true">
+  <modal name="user" @before-open="setPerson" :height="400" :width="600" :scrollable="true">
     <b-container class="pt-3 pb-4 userDetail" fluid="sm">
       <div><h3>Employee</h3></div>
       <hr />
@@ -47,7 +47,7 @@
             >
               <b-form-input id="contact" v-model="person.contact" trim></b-form-input>
             </b-form-group>
-            <b-button variant="success">Save</b-button>
+            <div class="align-right"><b-button variant="primary">Save</b-button></div>
           </div>
         </b-col>
       </b-row>
