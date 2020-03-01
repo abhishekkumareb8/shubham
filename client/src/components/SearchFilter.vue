@@ -1,6 +1,13 @@
 <template>
   <b-row>
-    <b-col class="mt-3 mb-3"><b-form-input id="search" v-on:keyup="onSearchKeyUp" v-model="searchText" placeholder="Search users" trim></b-form-input></b-col>
+    <b-col class="mt-3 mb-3">
+      <b-input-group>
+        <template v-slot:prepend>
+          <b-input-group-text ><b-icon-search></b-icon-search></b-input-group-text>
+        </template>
+        <b-form-input id="search" v-on:keyup="onSearchKeyUp" v-model="searchText" placeholder="Search users" trim></b-form-input>
+      </b-input-group>
+    </b-col>
     <b-col class="mt-3 mb-3" cols="12" md="auto"><b-form-select v-model="filter" :options="filterOptions"></b-form-select></b-col>
     <b-col class="mt-3 mb-3" col lg="1"><b-button variant="success" @click="onChange()">Filter</b-button></b-col>
   </b-row>

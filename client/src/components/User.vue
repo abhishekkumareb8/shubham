@@ -2,11 +2,11 @@
   <modal name="user" @before-open="setPerson" :height="400" :width="500" :scrollable="true">
     <b-container class="pt-3 pb-4" fluid="sm">
       <div><h3>Employee</h3></div>
+      <hr />
       <b-row>
         <b-col cols="4" class="profilePic text-center">
           <img v-bind:src="person.picture" />
           <h4>{{person.name}}</h4>
-          <hr />
           {{person.status}}
         </b-col>
         <b-col cols="12" md="auto">
