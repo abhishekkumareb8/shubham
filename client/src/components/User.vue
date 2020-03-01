@@ -1,17 +1,52 @@
 <template>
-  <modal name="user" @before-open="setPerson">
+  <modal name="user" @before-open="setPerson" :height="400" :width="500" :scrollable="true">
     <b-container class="pt-3 pb-4" fluid="sm">
       <div><h3>Employee</h3></div>
       <b-row>
-        <b-col cols="4" class="profilePic"><img v-bind:src="person.picture" /> </b-col>
+        <b-col cols="4" class="profilePic text-center">
+          <img v-bind:src="person.picture" />
+          <h4>{{person.name}}</h4>
+          {{person.status}}
+        </b-col>
         <b-col cols="12" md="auto">
           <div>
-            <h4>{{ person.name }}</h4>
-            <p><b>Address: </b>{{ person.location }}</p>
-            <p><b>Email: </b>{{ person.email }}</p>
-            <p><b>Status: </b>{{ person.status }}</p>
-            <p><b>Date of Birth: </b>{{ person.dob | moment("DD/MM/YYYY") }}</p>
-            <p><b>Contact Number: </b>{{ person.contact }}</p>
+            <b-form-group
+              id="fieldset-address"
+              label-cols-sm="4"
+              label-cols-lg="3"
+              label="Address"
+              label-for="location"
+            >
+              <b-form-input id="address" v-model="person.location" trim></b-form-input>
+            </b-form-group>
+            <b-form-group
+              id="fieldset-email"
+              label-cols-sm="4"
+              label-cols-lg="3"
+              label="Email"
+              label-for="email"
+            >
+              <b-form-input id="email" v-model="person.email" trim></b-form-input>
+            </b-form-group>
+            <b-form-group
+              id="fieldset-dob"
+              label-cols-sm="4"
+              label-cols-lg="3"
+              label="Date of Birth"
+              label-for="dob"
+            >
+              <b-form-input id="dob" v-model="person.dob" trim></b-form-input>
+            </b-form-group>
+            <b-form-group
+              id="fieldset-contact"
+              label-cols-sm="4"
+              label-cols-lg="3"
+              label="Contact"
+              label-for="contact"
+            >
+              <b-form-input id="contact" v-model="person.contact" trim></b-form-input>
+            </b-form-group>
+            <b-button variant="success">Save</b-button>
           </div>
         </b-col>
       </b-row>

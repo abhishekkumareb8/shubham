@@ -28,7 +28,7 @@
             </tbody>
           </table>
         </div>
-        <Pagination :page="this.page" :totalPage="this.totalPage" :sort="this.sortBy" :order="this.order" v-on:getPeople="getPeople" />
+        <Pagination :page="this.page" :totalPage="this.totalPage" :sort="this.sortBy" :order="this.order" :filterParams="this.filterParams" v-on:getPeople="getPeople" />
       </b-col>
       <b-col v-else>
         No results found
@@ -61,15 +61,17 @@ export default {
       totalPage: 0,
       person: {},
       order: 'desc',
-      sortBy: ''
+      sortBy: '',
+      filterParams: {}
     };
   },
   mounted() {
     this.getPeople();
   },
   methods: {
-    refreshPeople(response) {
+    refreshPeople(response, params) {
       this.setData(response.data);
+      this.filterParams = params;
     },
     async getPeople(params) {
       const response = await peopleService.searchPeople(params);

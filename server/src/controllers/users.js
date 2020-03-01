@@ -27,17 +27,17 @@ module.exports.controller = (app) => {
     const sort = req.query.sort;
     const order = req.query.order;
     let sortQuery = {}
+    delete req.query['sort'];
+    delete req.query['order'];
+    delete req.query['page'];
     if(sort && order && page) {
-      sortQuery[sort] = order
-      delete req.query['sort'];
-      delete req.query['order'];
-      delete req.query['page'];
+      sortQuery[sort] = order;
     } else {
       sortQuery = { '_id': -1 }
     }
     const value = Object.values(req.query)[0] || '';
     const filter = Object.keys(req.query)[0] || '';
-    const filterQuery = []
+    const filterQuery = [];
     if(filter && filter == 'any' && value == '') {
       query = {}
     } else if(filter && filter == 'any') {

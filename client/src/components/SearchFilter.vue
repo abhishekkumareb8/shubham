@@ -34,7 +34,7 @@ export default {
       const params = {};
       params[this.filter || 'any'] = this.searchText;
       const response = await peopleService.searchPeople(params);
-      this.$emit('refreshPeople', response);
+      this.$emit('refreshPeople', response, params);
     }
   }
 };
