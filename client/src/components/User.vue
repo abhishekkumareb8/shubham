@@ -36,7 +36,7 @@
               label="Date of Birth"
               label-for="dob"
             >
-              <b-form-input id="dob" v-model="person.dob" trim></b-form-input>
+              <b-form-input id="dob" v-model="this.dateofbirth" trim></b-form-input>
             </b-form-group>
             <b-form-group
               id="fieldset-contact"
@@ -57,13 +57,15 @@
 
 <script>
 import { BContainer, BRow, BCol, BFormGroup, BFormInput, BButton } from 'bootstrap-vue';
+import moment from 'moment';
 
 export default {
   name: 'user',
   data() {
     return {
       active: false,
-      person: {}
+      person: {},
+      dateofbirth: ''
     };
   },
   components: {
@@ -80,6 +82,7 @@ export default {
     },
     setPerson(event) {
       this.person = event.params;
+      this.dateofbirth = moment(event.params.dob).format('YYYY-MM-DD');
     }
   }
 };
