@@ -29,7 +29,8 @@ describe('People', () => {
       person: {},
       order: 'desc',
       sortBy: '',
-      filterParams: {}
+      filterParams: {},
+      loading: true
     };
     expect(typeof People.data).toBe('function');
 
@@ -41,8 +42,8 @@ describe('People', () => {
     expect(wrapper.contains('.people')).toBe(true);
   });
 
-  it('renders no results component people count is 0', () => {
-    expect(wrapper.findAll('.no-results').length).toBe(1);
+  it('renders loading component before people data is filled', () => {
+    expect(wrapper.findAll('.loading').length).toBe(1);
   });
 
   it('renders table if total people count is greater than 0 ', () => {

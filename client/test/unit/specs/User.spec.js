@@ -18,7 +18,8 @@ describe('User', () => {
   it('sets the correct default data', () => {
     let data = {
       active: false,
-      person: {}
+      person: {},
+      dateofbirth: ''
     };
     expect(typeof User.data).toBe('function');
 
