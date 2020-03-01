@@ -22,4 +22,16 @@ describe('Pagination', () => {
   it('has a page item component', () => {
     expect(wrapper.contains('.page-item')).toBe(true);
   });
+
+  it('emits next event when a page number is clicked', () => {
+    wrapper.setProps({ 
+      page: 1,
+      totalPage: 10
+    })
+    wrapper.vm.$nextTick().then(() => {
+      const pageItem = wrapper.find('page-item');
+      pageItem.trigger('click');
+      expect(wrapper.next().sort.length).toBe(1);
+    })
+  })
 })

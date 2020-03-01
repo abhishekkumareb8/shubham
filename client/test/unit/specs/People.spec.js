@@ -55,24 +55,10 @@ describe('People', () => {
       }],
       total: 1 
     })
-    // wrapper.vm.$forceUpdate();
     wrapper.vm.$nextTick().then(() => {
-      // console.log(wrapper.html());
       expect(wrapper.findAll('.table-responsive').length).toBe(1);
-    })
-    // Vue.nextTick(() => {
-    //   expect(wrapper.findAll('.table-responsive').length).toBe(1);
-    //   done();
-    // })
-    // console.log(wrapper.vm.total);
-    // expect(wrapper.findAll('.table-responsive').length).toBe(1);
-    // expect(wrapper.vm.total).toBe(1);
-    // expect(wrapper.classes()).toContain('table');
-    // expect(wrapper.findAll('div').hasClass('sfoo')).toBe(true)
-    // viewBtn.trigger('click');
-    // expect(wrapper.emitted().toggleModal.length).toBe(1);
-    // expect(wrapper.findAll('.viewBtn').length).toBe(1);
-});
+    }) 
+  });
 
   it('emits toggleModal event when View button is clicked', () => {
     wrapper.setData({ 
@@ -84,11 +70,27 @@ describe('People', () => {
       }],
       total: 1 
     })
-    // wrapper.vm.$forceUpdate();
     wrapper.vm.$nextTick().then(() => {
       const viewBtn = wrapper.find('.viewBtn');
       viewBtn.trigger('click');
       expect(wrapper.emitted().toggleModal.length).toBe(1);
+    })
+  })
+
+  it('emits sort event when a table header is clicked', () => {
+    wrapper.setData({ 
+      people: [{
+        name: 'anc',
+        location: 'a',
+        email: 'asd',
+        status: 'dis'
+      }],
+      total: 1 
+    })
+    wrapper.vm.$nextTick().then(() => {
+      const tableHeader = wrapper.find('th');
+      tableHeader.trigger('click');
+      expect(wrapper.emitted().sort.length).toBe(1);
     })
   })
 })
