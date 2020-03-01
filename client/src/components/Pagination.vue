@@ -26,8 +26,8 @@ export default {
   },
   methods: {
     next(page, sort, order, filterParams) {
-      const params = { page, sort, order }
-      const finalParams = {...params, ...filterParams }
+      const params = { page, sort, order };
+      const finalParams = { ...params, ...filterParams };
       this.$emit('getPeople', finalParams);
     }
   }
