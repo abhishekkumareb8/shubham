@@ -45,11 +45,16 @@ describe('SearchFilter', () => {
     expect(wrapper.contains('.filterBtn')).toBe(true);
   });
 
-  it('emits onChange event when Filter button is clicked', () => {
-    wrapper.vm.$nextTick().then(() => {
+  it('emits onChange event when Filter button is clicked', async() => {
+    try {
+      await wrapper.setData({
+        searchText: 'Dan',
+        filter: 'name'
+      })
+    } catch (e) {
       const filterBtn = wrapper.find('.filterBtn');
-      filterBtn.trigger('click');
-      expect(wrapper.emitted().onChange.length).toBe(1);
-    })
+    filterBtn.trigger('click');
+    expect(wrapper.emitted().onChange.length).toBe(1);
+    }
   })
 })

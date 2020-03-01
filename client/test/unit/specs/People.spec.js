@@ -46,52 +46,56 @@ describe('People', () => {
     expect(wrapper.findAll('.loading').length).toBe(1);
   });
 
-  it('renders table if total people count is greater than 0 ', () => {
-    wrapper.setData({ 
-      people: [{
-        name: 'Joe Hunter',
-        location: '205 College St',
-        email: 'joe.hunter@example.com',
-        status: 'Discarded'
-      }],
-      total: 1 
-    })
-    wrapper.vm.$nextTick().then(() => {
+  it('renders table if total people count is greater than 0 ', async() => {
+    try {
+      await wrapper.setData({
+        people: [{
+          name: 'Joe Hunter',
+          location: '205 College St',
+          email: 'joe.hunter@example.com',
+          status: 'Discarded'
+        }],
+        total: 1,
+        loading: false
+      })
+    } catch (e) {
       expect(wrapper.findAll('.table-responsive').length).toBe(1);
-    }) 
+    }
   });
 
-  it('emits toggleModal event when View button is clicked', () => {
-    wrapper.setData({ 
-      people: [{
-        name: 'Joe Hunter',
-        location: '205 College St',
-        email: 'joe.hunter@example.com',
-        status: 'Discarded'
-      }],
-      total: 1 
-    })
-    wrapper.vm.$nextTick().then(() => {
+  it('emits toggleModal event when View button is clicked', async() => {
+    try {
+      await wrapper.setData({
+        people: [{
+          name: 'Joe Hunter',
+          location: '205 College St',
+          email: 'joe.hunter@example.com',
+          status: 'Discarded'
+        }],
+        total: 1
+      })
+    } catch (e) {
       const viewBtn = wrapper.find('.viewBtn');
       viewBtn.trigger('click');
       expect(wrapper.emitted().toggleModal.length).toBe(1);
-    })
+    }
   })
 
-  it('emits sort event when a table header is clicked', () => {
-    wrapper.setData({ 
-      people: [{
-        name: 'Joe Hunter',
-        location: '205 College St',
-        email: 'joe.hunter@example.com',
-        status: 'Discarded'
-      }],
-      total: 1 
-    })
-    wrapper.vm.$nextTick().then(() => {
+  it('emits sort event when a table header is clicked', async() => {
+    try {
+      await wrapper.setData({
+        people: [{
+          name: 'Joe Hunter',
+          location: '205 College St',
+          email: 'joe.hunter@example.com',
+          status: 'Discarded'
+        }],
+        total: 1
+      })
+    } catch (e) {
       const tableHeader = wrapper.find('th');
       tableHeader.trigger('click');
       expect(wrapper.emitted().sort.length).toBe(1);
-    })
+    }
   })
 })

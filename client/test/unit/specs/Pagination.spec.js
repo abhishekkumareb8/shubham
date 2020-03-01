@@ -23,15 +23,16 @@ describe('Pagination', () => {
     expect(wrapper.contains('.page-item')).toBe(true);
   });
 
-  it('emits next event when a page number is clicked', () => {
-    wrapper.setProps({ 
-      page: 1,
-      totalPage: 10
-    })
-    wrapper.vm.$nextTick().then(() => {
-      const pageItem = wrapper.find('page-item');
+  it('emits next event when a page number is clicked', async() => {
+    try {
+      await wrapper.setProps({
+        page: 1,
+        totalPage: 2
+      })
+    } catch (e) {
+      const pageItem = wrapper.find('.page-item.next');
       pageItem.trigger('click');
-      expect(wrapper.next().sort.length).toBe(1);
-    })
+      expect(wrapper.emitted().next.length).toBe(1);
+    }
   })
 })
