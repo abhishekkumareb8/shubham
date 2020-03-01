@@ -12,11 +12,10 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(config.DB, 
-	{ 
+mongoose.connect(config.DB, {
 		useNewUrlParser: true,
 		useUnifiedTopology: true
-	}, function() {
+}, function() {
   console.log('Connection has been made');
 })
 .catch(err => {
@@ -27,17 +26,15 @@ mongoose.connect(config.DB,
 // Include controllers
 fs.readdirSync(__dirname + "/controllers").forEach(function (file) {
   if(file.substr(-3) == ".js") {
-    const route = require("./controllers/" + file)
-    route.controller(app)
+    const route = require("./controllers/" + file);
+    route.controller(app);
   }
 })
 
 app.get('/', (req, res) => {
 	res.send(
-		[{
-			message: "All Good from Backend!",
-			}]
-	)
+		[{ message: "All Good from Backend!" }]
+	);
 })
 
 app.listen(process.env.PORT || 8081);
