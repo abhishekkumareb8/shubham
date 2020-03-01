@@ -67,6 +67,9 @@ export default {
   props: {
     person: Object
   },
+  mounted() {
+    this.setDate(this.person);
+  },
   components: {
     'b-container': BContainer,
     'b-row': BRow,
@@ -80,8 +83,8 @@ export default {
     show() {
       this.active = true;
     },
-    setPerson(event) {
-      this.dateofbirth = moment(event.params.dob).format('YYYY-MM-DD');
+    setDate(person) {
+      this.dateofbirth = moment(person.dob).format('DD/MM/YYYY');
     }
   }
 };

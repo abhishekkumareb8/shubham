@@ -47,7 +47,7 @@ h4 {
 /*******************************/
 /***** Buttons *****************/
 /*******************************/
-.viewBtn {
+.viewBtn, .viewBtn:focus {
   background-color: #fff !important;
   border-color: #007bff !important;
   color: #212529;
