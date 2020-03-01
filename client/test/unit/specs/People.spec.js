@@ -3,6 +3,8 @@ import People from '@/components/People';
 import SearchFilter from '@/components/SearchFilter';
 import Pagination from '@/components/Pagination';
 
+const wrapper = shallowMount(People);
+
 describe('People', () => {
   it('has a mounted() hook', () => {
     expect(typeof People.mounted).toBe('function');
@@ -15,7 +17,10 @@ describe('People', () => {
       page: 0,
       per_page: 0,
       totalPage: 0,
-      person: {}
+      person: {},
+      order: 'desc',
+      sortBy: '',
+      filterParams: {}
     };
     expect(typeof People.data).toBe('function');
 
