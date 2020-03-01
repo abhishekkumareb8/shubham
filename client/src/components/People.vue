@@ -2,7 +2,7 @@
   <div>
     <SearchFilter v-on:refreshPeople="refreshPeople" />
 
-    <b-row>
+    <b-row class="people">
       <b-col v-if="total > 0">
         <div class="table-responsive">
           <table class="table">
@@ -21,16 +21,14 @@
                 <td>{{ person.location }}</td>
                 <td>{{ person.email }}</td>
                 <td>{{ person.status }}</td>
-                <td class="align-right">
-                  <b-button variant="primary" @click="toggleModal(person)">View</b-button>
-                </td>
+                <td class="align-right"><b-button variant="primary" class="viewBtn" @click="toggleModal(person)">View</b-button></td>
               </tr>
             </tbody>
           </table>
         </div>
         <Pagination :page="this.page" :totalPage="this.totalPage" :sort="this.sortBy" :order="this.order" :filterParams="this.filterParams" v-on:getPeople="getPeople" />
       </b-col>
-      <b-col v-else>
+      <b-col class="no-results" v-else>
         No results found
       </b-col>
     </b-row>
@@ -44,13 +42,18 @@ import peopleService from '@/services/peopleService';
 import SearchFilter from './SearchFilter';
 import Pagination from './Pagination';
 import User from './User';
+import { BButton, BRow, BCol, BIconArrowUpDown } from 'bootstrap-vue';
 
 export default {
   name: 'people',
   components: {
     SearchFilter,
     Pagination,
-    User
+    User,
+    'b-button': BButton,
+    'b-row': BRow,
+    'b-col': BCol,
+    'b-icon-arrow-up-down': BIconArrowUpDown
   },
   data() {
     return {

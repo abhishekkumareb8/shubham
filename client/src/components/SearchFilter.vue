@@ -1,19 +1,22 @@
 <template>
-  <b-row>
-    <b-col class="mt-3 mb-3">
-      <b-input-group>
-        <template v-slot:prepend>
-          <b-input-group-text ><b-icon-search></b-icon-search></b-input-group-text>
-        </template>
-        <b-form-input id="search" v-on:keyup="onSearchKeyUp" v-model="searchText" placeholder="Search users" trim></b-form-input>
-      </b-input-group>
-    </b-col>
-    <b-col class="mt-3 mb-3" cols="12" md="auto"><b-form-select v-model="filter" :options="filterOptions"></b-form-select></b-col>
-    <b-col class="mt-3 mb-3" col lg="1"><b-button variant="success" @click="onChange()">Filter</b-button></b-col>
-  </b-row>
+  <div class="search">
+    <b-row>
+      <b-col class="mt-3 mb-3">
+        <b-input-group>
+          <template v-slot:prepend>
+            <b-input-group-text ><b-icon-search></b-icon-search></b-input-group-text>
+          </template>
+          <b-form-input id="search" class="filterDropdown" v-on:keyup="onSearchKeyUp" v-model="searchText" placeholder="Search users" trim></b-form-input>
+        </b-input-group>
+      </b-col>
+      <b-col class="mt-3 mb-3" cols="12" md="auto"><b-form-select v-model="filter" :options="filterOptions"></b-form-select></b-col>
+      <b-col class="mt-3 mb-3" col lg="1"><b-button variant="success" class="filterBtn" @click="onChange()">Filter</b-button></b-col>
+    </b-row>
+  </div>
 </template>
 
 <script>
+import { BRow, BCol, BInputGroup, BInputGroupText, BFormInput, BButton, BFormSelect } from 'bootstrap-vue';
 import peopleService from '@/services/peopleService';
 
 export default {
@@ -30,6 +33,15 @@ export default {
         { value: 'status', text: 'Status' }
       ]
     };
+  },
+  components: {
+    'b-row': BRow,
+    'b-col': BCol,
+    'b-input-group': BInputGroup,
+    'b-input-group-text': BInputGroupText,
+    'b-form-input': BFormInput,
+    'b-button': BButton,
+    'b-form-select': BFormSelect
   },
   methods: {
     onSearchKeyUp(e) {

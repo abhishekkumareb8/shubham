@@ -15,6 +15,11 @@ Vue.use(VModal);
 Vue.config.productionTip = false;
 Vue.use(require('vue-moment'));
 
+Vue.component('pagination');
+Vue.component('people');
+Vue.component('searchfilter');
+Vue.component('user');
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

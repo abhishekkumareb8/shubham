@@ -1,6 +1,6 @@
 <template>
   <modal name="user" @before-open="setPerson" :height="400" :width="500" :scrollable="true">
-    <b-container class="pt-3 pb-4" fluid="sm">
+    <b-container class="pt-3 pb-4 userDetail" fluid="sm">
       <div><h3>Employee</h3></div>
       <hr />
       <b-row>
@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import { BContainer, BRow, BCol, BFormGroup, BFormInput, BButton } from 'bootstrap-vue';
+
 export default {
   name: 'user',
   data() {
@@ -63,6 +65,14 @@ export default {
       active: false,
       person: {}
     };
+  },
+  components: {
+    'b-container': BContainer,
+    'b-row': BRow,
+    'b-col': BCol,
+    'b-form-group': BFormGroup,
+    'b-form-input': BFormInput,
+    'b-button': BButton
   },
   methods: {
     show() {
