@@ -6,6 +6,7 @@
         <b-col cols="4" class="profilePic text-center">
           <img v-bind:src="person.picture" />
           <h4>{{person.name}}</h4>
+          <hr />
           {{person.status}}
         </b-col>
         <b-col cols="12" md="auto">
