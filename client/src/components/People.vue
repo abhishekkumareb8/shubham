@@ -79,7 +79,8 @@ export default {
     },
     async sort(sort, order) {
       const params = { sort, order };
-      const response = await peopleService.searchPeople(params);
+      const finalParams = { ...params, ...this.filterParams };
+      const response = await peopleService.searchPeople(finalParams);
       this.setData(response.data);
       this.sortBy = sort;
       this.order = order;
