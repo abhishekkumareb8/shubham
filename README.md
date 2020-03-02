@@ -7,6 +7,10 @@ People Management is a Vuejs / Expressjs web application which demonstrates a si
 - Express js for Backend
 - Mongoose as a data storage
 
+## Prerequisites
+- Node js >= 12
+- Yarn as package manager
+
 ## Setup Frontend
 ``` bash
 cd client
@@ -36,23 +40,19 @@ yarn install
 yarn start
 ```
 
-## Prerequisites
-- Node js >= 12
-- Yarn as package manager
-
 ## Features
 ### User Listing
-The application home page lists users in a tabular form. Few attributes are displayed in the table (Name, Location, Email, Status) which are also filterable and few attributes (Profile Picture, Date of Birth and Contact Number) are hidden in the table. And a view button which when clicked displays the user detail.
+- The application home page lists users in a tabular form. Few attributes are displayed in the table (Name, Location, Email, Status) which are also filterable and few attributes (Profile Picture, Date of Birth and Contact Number) are hidden in the table. And a view button which when clicked displays the user detail.
 
-There is a pagination which allows to navigate to different pages when there are mmany users. The per page count is set as 7.
+- There is a pagination which allows to navigate to different pages when there are mmany users. The per page count is set as 7.
 
-We can sort and order on the basis of any of these four columns by clicking on a table header.
+- We can sort and order on the basis of any of these four columns by clicking on a table header.
 
 ### User Detail
-'View' button in listing page triggers a modal box which displays all the information about the user.
+- 'View' button in listing page triggers a modal box which displays all the information about the user.
 
 ### User Search
-The application home page has a section for searching users. There are four filters available right now - Name, Location, Email and Status. We can search in any of these fields of as a whole combined, So when we search something without selecting the filter, it searches on all of the four fields to render the matched users.
+- The application home page has a section for searching users. There are four filters available right now - Name, Location, Email and Status. We can search in any of these fields of as a whole combined, So when we search something without selecting the filter, it searches on all of the four fields to render the matched users.
 
 ## Express APIs
 
@@ -89,4 +89,4 @@ Method: GET
 URL: http://localhost:8081/search?status=discarded
 Method: GET
 ```
-All of these APIs is implemented with pagination, sorting and ordering
+All of these APIs are implemented with pagination, sorting and ordering
