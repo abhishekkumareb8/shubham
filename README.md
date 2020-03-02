@@ -2,6 +2,8 @@
 
 People Management is a Vuejs / Expressjs web application which demonstrates a simple application which manages users with features such as listing users, viewing details of a particular user, ability to search users based on any attributes that they have in a single field or multiple fields, and ability to sort and order users.
 
+<img alt="People Management" src="people_management.gif">
+
 ## Technologies Used
 - Vue js for Frontend
 - Express js for Backend
@@ -53,6 +55,8 @@ yarn start
 
 ### User Search
 - The application home page has a section for searching users. There are four filters available right now - Name, Location, Email and Status. We can search in any of these fields of as a whole combined, So when we search something without selecting the filter, it searches on all of the four fields to render the matched users.
+
+- We can either search by clicking 'Filter' button or pressing enter after typing in the search text.
 
 ## Express APIs
 
