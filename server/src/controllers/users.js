@@ -1,4 +1,4 @@
-var User = require("../models/User");
+const User = require('../models/User');
 
 module.exports.controller = (app) => {
   // add a new user
@@ -44,20 +44,21 @@ module.exports.controller = (app) => {
     const filterQuery = [];
 
     if(filter && filter == 'any' && value == '') {
+      // When filter is not selected and searchtext is empty
       query = {};
     } else if(filter && filter == 'any') {
+      // When filter is not selected
       query = { $or: filterQuery };
       filterQuery.push({ name: { $regex: value, '$options': 'i' } });
       filterQuery.push({ location: { $regex: value, '$options': 'i' } });
       filterQuery.push({ email: { $regex: value, '$options': 'i' } });
       filterQuery.push({ status: { $regex: value, '$options': 'i' } });
     } else if(filter && value) {
+      // When filter is selected
       query = { $or: filterQuery };
       const queryString = {};
       queryString[filter] = { $regex: value, '$options': 'i' };
       filterQuery.push(queryString);
-    } else {
-      query = {};
     }
 
     User.find(query, 'name location email status dob contact picture', { skip: perPage * (page-1), limit: perPage, sort: sortQuery }, function (error, users) {

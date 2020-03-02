@@ -6,7 +6,7 @@
         <div><b-spinner variant="primary" label="Spinning"></b-spinner></div>
       </b-col>
       <b-col v-else>
-        <b-col v-if="total > 0">
+        <div v-if="total > 0">
           <div class="table-responsive">
             <table class="table">
               <thead>
@@ -24,18 +24,18 @@
                   <td>{{ person.location }}</td>
                   <td>{{ person.email }}</td>
                   <td>{{ person.status }}</td>
-                  <td class="align-right">
-                    <b-button variant="primary" class="viewBtn" v-b-modal.user @click="setPerson(person)">View</b-button>
+                  <td class="align-right pr-0">
+                    <b-button variant="primary" class="view-btn" v-b-modal.user @click="setPerson(person)">View</b-button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
           <Pagination :page="this.page" :totalPage="this.totalPage" :sort="this.sortBy" :order="this.order" :filterParams="this.filterParams" v-on:getPeople="getPeople" />
-        </b-col>
-        <b-col class="no-results" v-else>
+        </div>
+        <div class="no-results" v-else>
           No results found
-        </b-col>
+        </div>
       </b-col>
     </b-row>
     <User :person="this.person" />

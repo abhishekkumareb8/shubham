@@ -11,7 +11,9 @@ People Management is a Vuejs / Expressjs web application which demonstrates a si
 
 ## Prerequisites
 - Node js >= 12
-- Yarn as package manager
+- Yarn(1.22.0) as package manager
+
+*Note: To upgrade yarn run `curl --compressed -o- -L https://yarnpkg.com/install.sh | bash` and restart terminal*
 
 ## Setup Frontend
 ``` bash
@@ -41,6 +43,9 @@ yarn install
 # start server at localhost:8081
 yarn start
 ```
+*Note: No need to setup Mongoose DB as this application uses MLab which is a Database as a Service. When you create users from the API, it will automatically stored in the mongo database used by this application.*
+
+**Open `localhost:8080` in the browser to access the application.**
 
 ## Features
 ### User Listing
@@ -94,3 +99,8 @@ URL: http://localhost:8081/search?status=discarded
 Method: GET
 ```
 All of these APIs are implemented with pagination, sorting and ordering
+
+## Things to be implemented next
+- e2e tests
+- Edit a user from backend
+- Data validation while creating and editing a user

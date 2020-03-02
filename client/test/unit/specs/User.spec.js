@@ -38,10 +38,10 @@ describe('User', () => {
   })
 
   it('has a user detail component', () => {
-    expect(wrapper.contains('.userDetail')).toBe(true);
+    expect(wrapper.contains('.user-detail')).toBe(true);
   });
 
   it('has a user profile picture component', () => {
-    expect(wrapper.contains('.profilePic')).toBe(true);
+    expect(wrapper.contains('.profile-pic')).toBe(true);
   });
 })

@@ -75,8 +75,8 @@ describe('People', () => {
         total: 1
       })
     } catch (e) {
-      const viewBtn = wrapper.find('.viewBtn');
-      viewBtn.trigger('click');
+      const viewBtn = wrapper.find('.view-btn');
+      view-btn.trigger('click');
       expect(wrapper.emitted().toggleModal.length).toBe(1);
     }
   })

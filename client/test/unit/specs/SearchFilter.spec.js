@@ -38,11 +38,11 @@ describe('SearchFilter', () => {
   });
 
   it('has a filter dropdown', () => {
-    expect(wrapper.contains('.filterDropdown')).toBe(true);
+    expect(wrapper.contains('.filter-dropdown')).toBe(true);
   });
 
   it('has a filter button', () => {
-    expect(wrapper.contains('.filterBtn')).toBe(true);
+    expect(wrapper.contains('.filter-btn')).toBe(true);
   });
 
   it('emits onChange event when Filter button is clicked', async() => {
@@ -52,8 +52,8 @@ describe('SearchFilter', () => {
         filter: 'name'
       })
     } catch (e) {
-      const filterBtn = wrapper.find('.filterBtn');
-    filterBtn.trigger('click');
+      const filterBtn = wrapper.find('.filter-btn');
+    filter-btn.trigger('click');
     expect(wrapper.emitted().onChange.length).toBe(1);
     }
   })

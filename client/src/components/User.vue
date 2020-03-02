@@ -1,8 +1,8 @@
 <template>
   <b-modal id="user" title="Employee" ok-only ok-title="Save" size="lg">
-    <b-container class="pt-3 pb-4 userDetail" fluid="sm">
+    <b-container class="pt-3 pb-4 user-detail" fluid="sm">
       <b-row>
-        <b-col cols="12" md="4" class="profilePic text-center">
+        <b-col cols="12" md="4" class="profile-pic text-center">
           <img v-bind:src="person.picture" />
           <h4>{{person.name}}</h4>
           {{person.status}}
