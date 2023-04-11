@@ -7,7 +7,7 @@ name: Build and deploy an app to AKS with Kustomize
 env:
     AZURE_CONTAINER_REGISTRY: testreg24
     CLUSTER_NAME: testcluster
-    CONTAINER_NAME: testreg
+    CONTAINER_NAME: megha
     IMAGE_PULL_SECRET_NAME: testreg24secret
     KUSTOMIZE_PATH: ./overlays/production
     RESOURCE_GROUP: newRG

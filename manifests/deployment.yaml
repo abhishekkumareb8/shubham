@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: megha
+  labels:
+    app: megha
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: megha
+  template:
+    metadata:
+      labels:
+        app: megha
+    spec:
+      containers:
+        - name: megha
+          image: megha
+          ports:
+            - containerPort: 80

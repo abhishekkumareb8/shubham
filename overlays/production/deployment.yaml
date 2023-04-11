@@ -15,7 +15,8 @@ spec:
       creationTimestamp: null
     spec:
       containers:
-      - image: testreg24.azurecr.io/testreg
+      - image: testreg24.azurecr.io/megha
         name: peoplemanagment
         resources: {}
 status: {}
+}
