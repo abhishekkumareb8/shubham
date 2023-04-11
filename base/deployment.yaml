@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: peoplemanagment
+  labels:
+    app: peoplemanagment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: peoplemanagment
+  template:
+    metadata:
+      labels:
+        app: peoplemanagment
+    spec:
+      containers:
+        - name: peoplemanagment
+          image: peoplemanagment:latest
+          ports:
+            - containerPort: 8080

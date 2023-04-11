@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: peoplemanagment
+  name: peoplemanagment
+spec:
+  selector:
+    matchLabels:
+      app: peoplemanagment
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: testreg24.azurecr.io/testreg
+        name: peoplemanagment
+        resources: {}
+status: {}
