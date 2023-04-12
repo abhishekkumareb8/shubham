@@ -7,7 +7,7 @@ name: Build and deploy an app to AKS
 env:
     AZURE_CONTAINER_REGISTRY: demoaksacr2
     CLUSTER_NAME: demoaks
-    CONTAINER_NAME: shutest
+    CONTAINER_NAME: rcb
     DEPLOYMENT_MANIFEST_PATH: ./manifests
     IMAGE_PULL_SECRET_NAME: demoaksacr2secret
     RESOURCE_GROUP: aks-backup-rg

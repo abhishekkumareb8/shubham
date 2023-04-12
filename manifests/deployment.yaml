@@ -3,23 +3,23 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: shutest
-  name: shutest
+    app: rcb
+  name: rcb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: shutest
+      app: rcb
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: shutest
+        app: rcb
     spec:
       containers:
-      - image: demoaksacr2.azurecr.io/shutest
-        name: shutest
+      - image: demoaksacr2.azurecr.io/rcb
+        name: rcb
         ports:
         - containerPort: 80
         resources: {}
