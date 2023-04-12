@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shutest
+spec:
+  type: LoadBalancer
+  selector:
+    app: shutest
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

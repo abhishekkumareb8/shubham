@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: shutest
+  name: shutest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shutest
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: shutest
+    spec:
+      containers:
+      - image: demoaksacr2.azurecr.io/shutest
+        name: shutest
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
